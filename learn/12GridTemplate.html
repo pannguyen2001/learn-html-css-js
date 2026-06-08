@@ -1,0 +1,63 @@
+<!-- 12 grid columns template
+ break point: 
+ - large screen: 1920px
+ - medium screen (desktop): 1280px
+ - small screen(tablet): 768px
+ - extra small screen(mobile): 480px
+total sizes: t (is break point)
+total columns: Nc= 12
+width of each column: Wc
+gutter: space between columns: 
+number of gutter: Ng = 11
+width of gutter: Wg
+margin around container (left and right): 
+number of margin: Nm = 2
+width of margin: Wm
+total size: t = Nc*Wc + Ng*Wg + Nm*Wm = 12*Wc + 11*Wg + 2*Wm
+---------
+one way: Wm = 1/2 Wg and Wc =~ 3 Wg
+
+---------
+way 2: 
+with screen 1440px:
+Wm = 50px
+Wg = 32px
+=> Wc =~ 82px
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="12GridTemplate.css">
+  <title>12 Vertical Areas</title>
+    
+</head>
+<body>
+
+  <!-- Container for the 12 vertical areas -->
+  <div class="areas-container">
+    <div class="area"></div>
+    <div class="area"></div>
+    <div class="area"></div>
+    <div class="area"></div>
+    <div class="area"></div>
+    <div class="area"></div>
+    <div class="area"></div>
+    <div class="area"></div>
+    <div class="area"></div>
+    <div class="area"></div>
+    <div class="area"></div>
+    <div class="area"></div>
+  </div>
+  <header class="header-container">
+    <nav class="nav-container">
+
+    </nav>
+  </header>
+  <footer class="footer-container">
+    <div class="footer-wrapper"></div>
+  </footer>
+</body>
+</html>

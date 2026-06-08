@@ -1,0 +1,118 @@
+* {
+    --outline-margin: 32px;
+    --gap: 24px;
+    --opacity: 0.5;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: 1px solid tomato;
+  }
+  
+  /* Basic body styling */
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+  }
+  
+  /* Container for the vertical areas */
+  .areas-container {
+    display: flex;
+    flex: 1;
+    width: 100%; /* Adjust this to control the width of the design */
+    height: 100%;
+    padding: 0 var(--outline-margin);
+    justify-content: space-between; /* Space between each column */
+    z-index: 0;
+  }
+  
+  /* Styling for each vertical area */
+  .area {
+    flex: 1; /* Distribute equal space to all columns */
+    margin: 0 calc(var(--gap) / 2); /* Adds 2.5% space between each column */
+    background-color: #ffcccb; /* Light tomato background for the container */
+    height: 100%; /* Ensure each column stretches the full height of the container */
+  }
+  
+  /* Optional: Add a hover effect to see interaction */
+  .area:hover {
+    background-color: lightpink; /* Tomato color for the areas */ /* Change color when hovered */
+  }
+  
+  .area:first-child {
+    margin-left: 0;
+  }
+  
+  .area:last-child {
+    margin-right: 0;
+  }
+  
+  /* Optional: Add a hover effect to see interaction */
+  .area:hover {
+    background-color: lightpink; /* Tomato color for the areas */ /* Change color when hovered */
+  }
+  
+  header,
+  footer {
+    display: flex;
+    /* margin: 0 calc(var(--outline-margin) + var(--outline-margin)/2); */
+    padding: 0 var(--outline-margin);
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffcccb;
+    height: 5rem;
+    width: 100dvw;
+    z-index: 1;
+    position: absolute;
+    opacity: var(--opacity);
+  }
+  header {
+    top: 0;
+  }
+  
+  nav , .footer-wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    
+  }
+  nav{
+      background-color: blue;
+  }
+  
+  footer {
+    bottom: 0;
+    
+  }
+  .footer-wrapper{
+      background-color: lightskyblue;
+  }
+  @media screen and (min-width: 1441px){
+      *{
+          --outline-margin: 64px;
+          --gap: 32px;
+      }
+     
+  }
+  
+  @media screen and  (max-width: 679px){
+      *{
+          --outline-margin: 24px;
+          --gap: 16px;
+      }
+  
+  }
+  
+  @media screen and  (max-width: 359px){
+      *{
+          --outline-margin: 12px;
+          --gap: 8px;
+      }
+     
+  }
