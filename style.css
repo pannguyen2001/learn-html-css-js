@@ -1,1 +1,217 @@
-/* Add styles here */
+/* ========== CUSTOM CSS VARIABLES AND THEMING ========== */
+:root {
+    /* Color pallete */
+    --color-primary: #6361f1;
+    --color-primary-light: #8b5cf6;
+    --color-primary-dark: #4f46e5;
+    --color-secondary: #a855f7;
+    --color-accent: #ec4899;
+    --color-accent-glow: rgba(236, 72, 153, 0.4);
+
+    /* Background colors */
+    --color-dark: #020617;
+    --colort-darker: #0f172a;
+    --color-gray-dark: #1e293b;
+
+    /* Text color */
+    --color-text-main: #ffffff;
+    --color-text-muted: #cbd5e1;
+
+    /* Glassmorphism variables */
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+
+    /* Border and spacing */
+    --border-radius-sm: 12px;
+    --border-radius: 16px;
+    --border-radius-lg: 24px;
+    --container-width: 1400px;
+    --header-height: 80px;
+
+    /* Transition */
+    --transition: all 0.4s cubic-bezier(0.17s, 0.885, 0.32, 1.1);
+}
+
+* {
+    margin: 0; /* remove default margin */
+    padding: 0; /* remove default padding */
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Hack Nerd Font Mono', 'monospace';
+    overflow: hidden; /*prevent horizontal (x axis) scrolling */
+    line-height: 1.7;
+}
+
+/* ========== GLOBAL RESET ========== */
+a {
+    text-decoration: none;
+    color: inherit
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%; /* avoid overflow container, for responsive */
+    display: block; /* remove tiny gap below images (inline spacing) */
+    object-fit: cover;
+}
+
+
+/* ========== CUSTOM CURSOR ========== */
+.cursor {
+    position: fixed; /* follow my mouse, even scroll*/
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid var(--color-accent);
+    pointer-events: none; /* disable pointer event in element, like button, link, meaning button/link effect would not effect on cursor element */
+    z-index: 9999;
+    transform: translate(-50%, 50%); /* help cursor align with the mouse pointer */
+    mix-blend-mode: difference; /* create inverting style for cursor effect */
+    transition: transform 0.1s, width 0.3s, height 0.3s, background-color 0.3sl
+}
+
+.cursor.hover {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(236, 72, 153, 0.2);
+    border-color: var(--color-primary);
+}
+
+.cursor-follower {
+    width: 8px;
+    height: 8px;
+    background-color: var(--color-primary);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    filter: blur(1px);
+    transform: translate(-50%, 50%);
+    transition: width 0.4s, height 0.4s, background-color 0.4s;
+    filter: blur(1px);
+}
+
+
+.cursor-follower.hover {
+    width: 60px;
+    height: 60px;
+    background-color: rgba(99, 102, 241, 0.1); /* this will be activated when JS is active */
+}
+
+
+/* ========== HEADER AND NAVIGATION ========== */
+header {
+    height: var(--header-height);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(2, 6, 23, 0.05);
+    backdrop-filter: blur(15px); /* Glassmophism, blur all content behind it */
+    border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+    transition: var(--transition);
+}
+
+/* JS will add '.scrolled' class when window.scrollY > 50 */
+.header.scrolled {
+    height: 70px;
+    background: rgba(2, 6, 23, 0.95);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.nav {
+    height: 100%;   
+}
+
+.logo {
+    font-size: 1.6rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(to right, #ffffff, var(--color-primary));
+    background-clip: text;
+    color: transparent;
+}
+
+.logo-dot {
+    width: 24px;
+    height: 24px;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    border-radius: 50%;
+    animation: pulse-purple 2s infinite;
+}
+
+@keyframes pulse-purple {
+    0% {
+        box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(99, 102, 241, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4);
+    }
+}
+
+.nav-links {
+    display: flex;
+    gap: 40px;
+}
+
+.nav-links a {
+    font-weight: 500;
+    font-size: 0.95rem;
+    position: relative;
+    padding: 8px 0;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(to right, var(--color-primary), var(--color-accent));
+    bottom: 0;
+    left: 0;
+    transition: width 0.3 ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.nav-links a.active {
+    color: var(--color-primary);
+    border-bottom: 2px solid var(--color-primary);
+}
+
+@media (min-width: 993px) {
+    .nav-links-mobile-btn {
+        display: none !important;
+    }
+}
+
+
+/* ========== UTILITY CLASSES ========== */
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.flex-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
